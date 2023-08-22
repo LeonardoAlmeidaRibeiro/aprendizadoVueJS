@@ -17,10 +17,9 @@
 <body>
     teste
     <div id="app">
-      <a v-bind:href="site">Site</a>
-      <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
-      <input type="text" v-bind:placeholder="instrucao" v-bind:value="valor">
-      <input type="checkbox" v-bind:checked="check">
+     {{mensagem}}
+    <input type="text" name="" id="" :value="mensagem">
+    {{2+2}}
 
     </div>
 
@@ -29,12 +28,7 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                site: 'https://google.com',
-                cor: 'verde',
-                instrucao:'Placeholder - Diretica v-bind',
-                valor: 'sei lá',
-                check:true,
-                
+                mensagem:'Expressão'
             },
             methods: {
             },
