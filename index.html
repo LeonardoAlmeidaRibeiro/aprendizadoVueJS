@@ -45,17 +45,19 @@
 <body>
     teste
     <div id="app">
-        <div class="borda div-principal" :class="cor">
-            Cor {{cor}} 
-            <br>
-            Posição X: {{posicaoX}}
-            <br>
-            Posição Y:{{posicaoy}}
-        </div>
+        <a href="https://www.google.com" target="_blank" v-on:click="prevenirComportamentoPadrao($event)">Link</a>
+        <p>Mensagem: {{msg}}</p>
         <hr>
-        <div @click="mudarCor('verde')" class="borda div-comum"></div>
-        <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
-        <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
+        <button @click="executarUmaVez()">btn</button>
+        <p>Cliques: {{ cliques}}</p>
+        <hr>
+        <form @submit.prevent.once="prevenirUmaVez()">
+            <button> Enviar</button>
+            <p>Formulário: {{form}}</p>
+        </form>
+        <hr>
+        <input type="text" @keyup.Enter="capturandoTeclas($event)"> 
+        <p>teclas</p>{{teclas}}
     </div>
 
     <script>
@@ -63,18 +65,24 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cor: 'Branco',
-                posicaoX: 0,
-                posicaoy: 0
+                msg: '',
+                cliques:0,
+                form:'',
+                teclas:''
             },
             methods: {
-                mudarCor(c) {
-                    this.cor = c;
+                prevenirComportamentoPadrao(event) {
+                    event.preventDefault()
+                    this.msg = 'Comportamento padrão ativado'
                 },
-                coordenadas(e) {
-                    console.log(e.clientX, e.clientY);
-                    this.posicaoX = e.clientX;
-                    this.posicaoy =e.clientY;
+                executarUmaVez(){
+                    this.cliques ++
+                },
+                prevenirUmaVez(){
+                    this.form = 'Prevenindo o comportamento padrão'
+                },
+                capturandoTeclas(e){
+                    this.teclas += e.key
                 }
             },
         })
