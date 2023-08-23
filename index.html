@@ -8,8 +8,36 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
+        .branco {
+            background-color;
+            : white
+        }
+
         .verde {
-            color: green
+            background-color: green
+        }
+
+        .azul {
+            background-color: blue
+        }
+
+        .vermelho {
+            background-color: red
+        }
+
+        .borda {
+            border: 1px solid;
+        }
+
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+
+        .div-comum {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
         }
     </style>
 </head>
@@ -17,8 +45,17 @@
 <body>
     teste
     <div id="app">
-        <input type="text" value="" v-on:keyup="imprimirTexto('Enviando Parametro',5,value)"> <!-- diretiva  com "v-on"-->
-        <button @click="mensagemAlerta($event, 'texto', 10)">Enviar</button> <!-- diretiva com "@" -->
+        <div class="borda div-principal" :class="cor">
+            Cor {{cor}} 
+            <br>
+            Posição X: {{posicaoX}}
+            <br>
+            Posição Y:{{posicaoy}}
+        </div>
+        <hr>
+        <div @click="mudarCor('verde')" class="borda div-comum"></div>
+        <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
+        <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
     </div>
 
     <script>
@@ -26,17 +63,18 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                value: true
+                cor: 'Branco',
+                posicaoX: 0,
+                posicaoy: 0
             },
             methods: {
-                imprimirTexto(p,n,v) {
-                 console.log(p);
-                 console.log(n);
-                 console.log(v);
-                 console.log(this.value);
+                mudarCor(c) {
+                    this.cor = c;
                 },
-                mensagemAlerta( event,p1,p2){
-                    console.log(event ,p1, p2);
+                coordenadas(e) {
+                    console.log(e.clientX, e.clientY);
+                    this.posicaoX = e.clientX;
+                    this.posicaoy =e.clientY;
                 }
             },
         })
