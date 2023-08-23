@@ -15,13 +15,30 @@
 <body>
 
     <div id="app">
-      <ul>
-        <li v-for="(curso, chave) in cursos">{{curso}} - {{chave}}</li>
-      </ul>
-      <br>
-      <ul>
-        <li v-for="(curso, chave) in cursos" v-text="curso +'-'+ chave"></li>
-      </ul>
+        <ul>
+            <li v-for="(curso, chave) in cursos">{{curso}} - {{chave}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(curso, chave) in cursos" v-text="curso +'-'+ chave"></li>
+        </ul>
+        <hr>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(curso2,chave) in cursos2">
+                    <td>{{chave}}</td>
+                    <td>{{curso2.titulo}}</td>
+                    <td>{{curso2.descricao}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
@@ -29,7 +46,11 @@
         const vm = new Vue({
             el: '#app',
             data: {
-              cursos:['PHP','JAVA', 'DB','PHYTON','HTML','CSS']
+                cursos: ['PHP', 'JAVA', 'DB', 'PHYTON', 'HTML', 'CSS'],
+                cursos2: {
+                    1000: { titulo: 'Laravel', descricao: 'Domine o framework PHP mais poderoso do mundo' },
+                    1001: { titulo: 'JAVA', descricao: 'Domine a linguagem mais massa do mundo' }
+                }
             },
             methods: {
                 creditar() {
