@@ -15,12 +15,8 @@
 <body>
 
     <div id="app">
-        <p @mouseover="exibirTextoAjuda = true" @mouseout=" exibirTextoAjuda = false">Exemplo de tooltip</p>
-        <div v-show="exibirTextoAjuda">
-            <h3>Título texto ajuda</h3>
-            <p>Conteudo do texto de ajuda</p>
-        </div>
-      
+        <div v-html="elementoHTML">texto de exemplo </div>
+        <div v-html="elementoVazio">Teste para variável vazia</div>
     </div>
 
     <script>
@@ -28,7 +24,8 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                exibirTextoAjuda:false
+                elementoHTML:'<p><bold>Site:</bold></p> <a href="https://www.hfa.com.br">Hospital</a>',
+                elementoVazio:null
             },
             methods: {},
         })
