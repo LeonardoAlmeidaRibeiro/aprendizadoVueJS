@@ -15,21 +15,12 @@
 <body>
 
     <div id="app">
-        <!-- v-if simples -->
-        <button @click="exibirSaldo= !exibirSaldo"> Saldo</button>
-        <p><span v-if="!exibirSaldo">Exibir Saldo: --------- </span> <span v-if="exibirSaldo"> Ocultar Saldo:</span>
-            <span v-if="exibirSaldo">R$: {{saldo}}</span></p>
-        <hr>
-        <!-- v-if e v-else -->
-        <p>Idade: <input type="text" id="txtIdade" @blur="setIdade()"></p>
-        <p v-if="idade<18"> Menor de Idade</p>
-        <p v-else>Maior de idade</p>
-        <hr>
-        <!-- v-if v-else-if v-else -->
-        Nota: <input type="text" id="txtNota" @blur="setNota()">
-        <p v-if="nota ==''">Digite a Nota do Aluno</p>
-        <p v-else-if="nota>=6">Aluno Aprovado</p>
-        <p v-else>Aluno de Recuperação</p>
+        <p @mouseover="exibirTextoAjuda = true" @mouseout=" exibirTextoAjuda = false">Exemplo de tooltip</p>
+        <div v-show="exibirTextoAjuda">
+            <h3>Título texto ajuda</h3>
+            <p>Conteudo do texto de ajuda</p>
+        </div>
+      
     </div>
 
     <script>
@@ -37,19 +28,9 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                saldo: 123.45,
-                exibirSaldo: false,
-                idade: 0,
-                nota:0
+                exibirTextoAjuda:false
             },
-            methods: {
-                setIdade() {
-                    this.idade = txtIdade.value
-                },
-                setNota(){
-                    this.nota = txtNota.value
-                }
-            },
+            methods: {},
         })
 
     </script>
