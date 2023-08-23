@@ -15,8 +15,11 @@
 <body>
 
     <div id="app">
-        <div v-html="elementoHTML">texto de exemplo </div>
-        <div v-html="elementoVazio">Teste para variável vazia</div>
+        <p v-once>Saldo Inicial: {{saldo}}</p>
+        <p>Saldo Atualizado: {{saldo}}</p>
+        <input type="text" name="valor" id="valor">
+        <button @click="creditar()">Creditar</button>
+        <button @click="debitar()"> Debitar</button>
     </div>
 
     <script>
@@ -24,10 +27,16 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                elementoHTML:'<p><bold>Site:</bold></p> <a href="https://www.hfa.com.br">Hospital</a>',
-                elementoVazio:null
+                saldo: 1100
             },
-            methods: {},
+            methods: {
+                creditar() {
+                    this.saldo += parseFloat(valor.value)
+                },
+                debitar() {
+                    this.saldo -= parseFloat(valor.value)
+                }
+            },
         })
 
     </script>
