@@ -8,8 +8,8 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .verde{
-            color:green
+        .verde {
+            color: green
         }
     </style>
 </head>
@@ -17,10 +17,8 @@
 <body>
     teste
     <div id="app">
-     {{mensagem}}
-    <input type="text" name="" id="" :value="mensagem">
-    {{2+2}}
-
+        <input type="text" value="" v-on:keyup="imprimirTexto()"> <!-- diretiva  com "v-on"-->
+        <button @click="mensagemAlerta">Enviar</button> <!-- diretiva com "@" -->
     </div>
 
     <script>
@@ -28,12 +26,19 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem:'Expressão'
+                mensagem: 'Expressão'
             },
             methods: {
+                imprimirTexto() {
+                 console.log('teste');
+                },
+                mensagemAlerta(){
+                    alert('kkkkkkkkkkkkkkkkk');
+                }
             },
         })
 
     </script>
 </body>
+
 </html>
