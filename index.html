@@ -8,56 +8,21 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .branco {
-            background-color;
-            : white
-        }
-
-        .verde {
-            background-color: green
-        }
-
-        .azul {
-            background-color: blue
-        }
-
-        .vermelho {
-            background-color: red
-        }
-
-        .borda {
-            border: 1px solid;
-        }
-
-        .div-principal {
-            width: 200px;
-            height: 200px;
-        }
-
-        .div-comum {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-        }
+    
     </style>
 </head>
 
 <body>
     teste
     <div id="app">
-        <a href="https://www.google.com" target="_blank" v-on:click="prevenirComportamentoPadrao($event)">Link</a>
-        <p>Mensagem: {{msg}}</p>
-        <hr>
-        <button @click="executarUmaVez()">btn</button>
-        <p>Cliques: {{ cliques}}</p>
-        <hr>
-        <form @submit.prevent.once="prevenirUmaVez()">
-            <button> Enviar</button>
-            <p>Formulário: {{form}}</p>
-        </form>
-        <hr>
-        <input type="text" @keyup.Enter="capturandoTeclas($event)"> 
-        <p>teclas</p>{{teclas}}
+        <input type="text" name="inputText" id="inputText">
+        <select name="opcoes" id="opcoes">
+            <option value="A">Opção 1</option>
+            <option value="B">Opção 2</option>
+            <option value="C">Opção 3</option>
+        </select>
+        <button type="button" @click="selecionarElementoFilho()" >Botão</button>
+      
     </div>
 
     <script>
@@ -65,24 +30,11 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                msg: '',
-                cliques:0,
-                form:'',
-                teclas:''
+             
             },
             methods: {
-                prevenirComportamentoPadrao(event) {
-                    event.preventDefault()
-                    this.msg = 'Comportamento padrão ativado'
-                },
-                executarUmaVez(){
-                    this.cliques ++
-                },
-                prevenirUmaVez(){
-                    this.form = 'Prevenindo o comportamento padrão'
-                },
-                capturandoTeclas(e){
-                    this.teclas += e.key
+                selecionarElementoFilho(){
+                    console.log(opcoes.value)
                 }
             },
         })
