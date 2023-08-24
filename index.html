@@ -39,6 +39,23 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
+
+
+        <ul>
+            <div>
+                <li v-for="pub in publicacoes" style="border: solid 1px; margin-bottom: 10px;" :key="pub.id">
+                    {{pub}}
+
+                    <hr>
+                    <input type="text" name="" id="">
+                </li>
+            </div>
+        </ul>
+
+        <button @click="misturarArray()"> Misturar</button>
+
+        </li>
     </div>
 
     <script>
@@ -50,7 +67,12 @@
                 cursos2: {
                     1000: { titulo: 'Laravel', descricao: 'Domine o framework PHP mais poderoso do mundo' },
                     1001: { titulo: 'JAVA', descricao: 'Domine a linguagem mais massa do mundo' }
-                }
+                },
+                publicacoes: [
+                    { id: 1, publicacao: 'Publicacão 1' },
+                    { id: 2, publicacao: 'Publicacão 2' },
+                    { id: 3, publicacao: 'Publicacão 3' }
+                ]
             },
             methods: {
                 creditar() {
@@ -58,6 +80,14 @@
                 },
                 debitar() {
                     this.saldo -= parseFloat(valor.value)
+                },
+                misturarArray(){
+                    let misturado = [0];
+                    misturado[0] = this.publicacoes[2]
+                    misturado[1] = this.publicacoes[0]
+                    misturado[2] = this.publicacoes[1]
+
+                    this.publicacoes = misturado
                 }
             },
         })
