@@ -16,6 +16,14 @@
 
     <div id="app">
         <ul>
+            <li v-for="n in 5">{{n}}</li>
+        </ul>
+        <!-- ou -->
+        <ul>
+            <li v-for="n in numero">{{n}}</li>
+        </ul>
+        <!--  -->
+        <ul>
             <li v-for="(curso, chave) in cursos">{{curso}} - {{chave}}</li>
         </ul>
         <hr>
@@ -71,8 +79,9 @@
                 publicacoes: [
                     { id: 1, publicacao: 'Publicacão 1' },
                     { id: 2, publicacao: 'Publicacão 2' },
-                    { id: 3, publicacao: 'Publicacão 3' }
-                ]
+                    { id: 3, publicacao: 'Publicacão 3' },
+                ],
+                numero: 10,
             },
             methods: {
                 creditar() {
