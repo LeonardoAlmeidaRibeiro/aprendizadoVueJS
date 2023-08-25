@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>Document</title>
-    <style>
+    <style>      
     </style>
 </head>
-
 <body>
     <div id="app">
-        {{paciente}}
+        <span>Paciente: </span><input type="text" v-model="paciente">
         <br>
-        <input type="text" name="" id="" v-bind:value="paciente" v-on:keyup="setPaciente($event)">
-        <input type="text" name="" id="" v-model="paciente">
-        <hr>
-        <input type="radio" name="sexo" id="" value="f" v-model="sexo">Feminino
-        <input type="radio" name="sexo" id="" value="m" v-model="sexo">Masculino
-        <br>
-        {{sexo}}
-        <hr>
-        <select name="" id="" v-model="plano">
-            <option value="" disabled>Selecione</option>
-            <option value="1">Básico</option>
-            <option value="2">Médio</option>
-            <option value="3">Ótimo</option>
-        </select>
-        <br>
-        {{plano}}
-        <hr>
-        <input type="checkbox" name="" id="" value="100" v-model="doencas">Aids
-        <input type="checkbox" name="" id="" value="101"v-model="doencas">Asma
-        <input type="checkbox" name="" id="" value="102"v-model="doencas">Câncer
-        <br>
-        {{doencas}}
-        <hr>
-        <textarea name="" id="" cols="30" rows="10" v-model="diagnostico"></textarea>
-        <br>
-        {{diagnostico}}
+        <ul>
+            <li v-for="p in lista">{{p.nome}}, {{p.idade}}</li>
+        </ul>
     </div>
 
     <script>
@@ -48,23 +23,26 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                paciente: 'Jinx o gatilho desenfreiado',
-                sexo: '',
-                plano: '',
-                doencas:[], 
-                diagnostico:''
+                paciente: '',
+                pacientes: [
+                    { nome: 'Jorge Sant Ana', idade: 32 },
+                    { nome: 'João Santos', idade: 45},
+                    { nome: 'José Auguto', idade: 18 },
+                    { nome: 'Júnior Silva', idade: 20 },
+                    { nome: 'Julho Nogueira', idade: 50},
+                ],
+                lista: []
             },
-            methods: {
-                setPaciente(e) {
-                    this.paciente = e.target.value
+            methods: {},
+            computed: {},
+            watch: {
+                paciente(valorNovo) {
+                    console.log(valorNovo)
+                    this.lista = this.pacientes.filter(p => p.nome.match(valorNovo))
                 }
-            },
-            computed: {
-
             }
         })
 
     </script>
 </body>
-
 </html>
